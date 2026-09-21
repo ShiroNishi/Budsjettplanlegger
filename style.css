@@ -1,21 +1,47 @@
 #header-container{
+    text-align: center;
+    text-shadow: 2px 2px 4px #726060;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: end;
-    border: solid black;
     }
 
 
+#page-container{
+    margin: 0px 50px;
+    min-width: 450px;
+    background-color: #d1e2f0;
+    border-radius: 30px;
+    border: solid #000000;
+    border-width: 1px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-items: stretch;
+}
+
+#budget-element{
+    margin: 20px;
+    background-color: #e2f2f5;
+    border-radius: 20px;
+    border: solid #000000;
+    border-width: 1px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+}
+
+
+//////////////////////////////
 #income-container{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     border: solid black;
 
 }
-
 
 .note-card{
     background-color: #fef08a;
     min-height: 150px;
     
 }
+
+
