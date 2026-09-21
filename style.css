@@ -8,14 +8,14 @@
 
 
 #page-container{
-    margin: 0px 50px;
-    min-width: 450px;
+    margin: 0px 10%;
+    min-width: 920px;
     background-color: #d1e2f0;
     border-radius: 30px;
     border: solid #000000;
     border-width: 1px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     justify-items: stretch;
 }
 
@@ -30,18 +30,26 @@
     padding-right: 20px;
 }
 
-
-//////////////////////////////
-#income-container{
-    display: grid;
-    border: solid black;
-
+.add{
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(34, 122, 238);
+    border-radius: 5px;
+    text-align: center;
+    width: 150px;
+    padding: 3px 0px;
 }
 
-.note-card{
-    background-color: #fef08a;
-    min-height: 150px;
-    
+.listItem{
+    border-bottom: solid rgb(0, 0, 0);
+    border-bottom-width: 1px;
+}
+
+
+
+
+html {
+  font-size: clamp(16px, 1.2vw + 10px, 28px);
 }
 
 
