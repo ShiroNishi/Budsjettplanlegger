@@ -1,0 +1,21 @@
+#header-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 10%;
+    border: solid black;
+    }
+
+
+#income-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    border: solid black;
+
+}
+
+
+.note-card{
+    background-color: #fef08a;
+    min-height: 150px;
+}
