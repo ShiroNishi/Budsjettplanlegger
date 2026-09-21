@@ -40,6 +40,16 @@
     padding: 3px 0px;
 }
 
+.delete{
+    margin-top: 10px;
+    color: white;
+    background-color: rgba(238, 34, 34, 0.884);
+    border-radius: 5px;
+    text-align: center;
+    width: 50px;
+    padding: 3px 0px;
+}
+
 .listItem{
     border-bottom: solid rgb(0, 0, 0);
     border-bottom-width: 1px;

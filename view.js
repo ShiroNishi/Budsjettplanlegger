@@ -20,7 +20,7 @@ function updateView(){
                     <tr>
                         <th style="padding-right: 40px">Utgift</th>
                         <th style="padding-right: 70px">Beskrivelse</th>
-                        <th style="padding-left: 15px; padding-right: 40px;">Sum</th>
+                        <th style="padding-left: 25px; padding-right: 40px;">Sum</th>
                         <th>Velg</th>
                         
                     </tr>
@@ -53,12 +53,12 @@ function addBudget(){
 function budgetList(){
     let html = ""
     for (i = 0; i < expensesList.length; i++){
-        html += `
+        html += /*HTML*/ `
             <tr class="listItem">
                 <td>${expensesList[i].title}</td>
                 <td>${expensesList[i].description}</td>
                 <td>${expensesList[i].amount} kr</td>
-                <td><button>Slett</button></td>
+                <td><button class="delete" onclick="deleteItem(${i})">Slett</button></td>
             </tr>
 
         `
@@ -76,4 +76,9 @@ function setExpense(name, desc, nok){
     amount = "";
     updateView()
     }
+}
+
+function deleteItem(index){
+    expensesList.splice(index, 1);
+    updateView()
 }
