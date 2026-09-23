@@ -1,7 +1,11 @@
 
-let pageView = {
-
+const model = {
+    app: {
+        page: "income"
+    }
 }
+
+
 
 let expensesList = []
 

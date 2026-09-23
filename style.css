@@ -19,6 +19,13 @@
     justify-items: stretch;
 }
 
+.page-buttons{
+    margin-top: 10px;
+    position: relative;
+    grid-column: span 2;
+    justify-self: right;
+}
+
 #budget-element{
     margin: 20px;
     background-color: #e2f2f5;

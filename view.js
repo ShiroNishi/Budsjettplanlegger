@@ -2,16 +2,76 @@
 
 updateView()
 function updateView(){
+    let currentPageView = "";
+    switch (model.app.page) {
+        case "income":
+            currentPageView = incomeView();
+            break;
+        case "expenses":
+            currentPageView = expensesView();
+            break;
+    }
     document.getElementById('app').innerHTML = /*HTML*/ `
+
+        <div class="container">
+            <div class="page-buttons">
+                <button class="add" style="margin-right: 100px"
+                onclick="setPage('income')">Inntekter</button>
+                <button class="add" style="margin-right: 100px"
+                onclick="setPage('expenses')">Utgifter</button>
+                <button class="add" style="margin-right: 90px">Oversikt</button>
+            </div>
+            ${currentPageView}
+        </div>
+    `
+}
+
+
+
+function incomeView(){
+    let html = /*HTML*/ `
         <div id="header-container">
             <h1><b>Budsjettplanlegger</b></h1>
             <h3>Måned/År: ___________</h3>
         </div>
+
+        <div id="page-container">
+            <div id="budget-element">
+                <h3>Legg til lønn</h3>
+                ${addIncome()}
+            </div>
+
+            <div id="budget-element" style="min-width: 200px">
+                <h3>Oversikt lønn</h3>
+                <table style="border-bottom: solid black; border-bottom-width: 1px">
+                    <tr>
+                        <th style="padding-right: 40px">Utgift</th>
+                        <th style="padding-right: 70px">Beskrivelse</th>
+                        <th style="padding-left: 25px; padding-right: 40px;">Sum</th>
+                        <th>Velg</th>
+                        
+                    </tr>
+                    ${incomeList()}
+                </table>
+            </div>
+        </div>
+    `
+    return html
+}
+
+
+function expensesView(){
+    let html = /*HTML*/ `
+        <div id="header-container">
+            <h1><b>Budsjettplanlegger</b></h1>
+            <h3>Måned/År: ___________</h3>
+        </div>
+
         <div id="page-container">
             <div id="budget-element">
                 <h3>Legg til utgift</h3>
                 
-                ${addBudget()}
+                ${addIncome()}
             </div>
 
             <div id="budget-element" style="min-width: 200px">
@@ -24,16 +84,19 @@ function updateView(){
                         <th>Velg</th>
                         
                     </tr>
-                    ${budgetList()}
+                    ${incomeList()}
                 </table>
             </div>
         </div>
     `
-         
+    return html
 }
 
 
-function addBudget(){
+
+
+// FUNKSJONER
+function addIncome(){
     let html = /*HTML*/ `
         <p>Tittel:</p>
         <input placeholder="Utgift" onchange="itemTitle = this.value">
@@ -50,7 +113,7 @@ function addBudget(){
     return html
 }
 
-function budgetList(){
+function incomeList(){
     let html = ""
     for (i = 0; i < expensesList.length; i++){
         html += /*HTML*/ `
