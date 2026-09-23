@@ -27,7 +27,6 @@ function updateView(){
 }
 
 
-
 function incomeView(){
     let html = /*HTML*/ `
         <div id="header-container">
@@ -37,12 +36,12 @@ function incomeView(){
 
         <div id="page-container">
             <div id="budget-element">
-                <h3>Legg til lønn</h3>
+                <h3>Ny inntekt</h3>
                 ${addIncome()}
             </div>
 
             <div id="budget-element" style="min-width: 200px">
-                <h3>Oversikt lønn</h3>
+                <h3>Oversikt inntekter</h3>
                 <table style="border-bottom: solid black; border-bottom-width: 1px">
                     <tr>
                         <th style="padding-right: 40px">Utgift</th>
@@ -69,9 +68,9 @@ function expensesView(){
 
         <div id="page-container">
             <div id="budget-element">
-                <h3>Legg til utgift</h3>
+                <h3>Ny utgift</h3>
                 
-                ${addIncome()}
+                ${addExpense()}
             </div>
 
             <div id="budget-element" style="min-width: 200px">
@@ -84,7 +83,7 @@ function expensesView(){
                         <th>Velg</th>
                         
                     </tr>
-                    ${incomeList()}
+                    ${expenseList()}
                 </table>
             </div>
         </div>
@@ -99,6 +98,38 @@ function expensesView(){
 function addIncome(){
     let html = /*HTML*/ `
         <p>Tittel:</p>
+        <input placeholder="Inntekt" onchange="itemTitle = this.value">
+        <p>Beskrivelse:</p>
+        <textarea placeholder="Kort beskrivelse"
+        maxlength="30"
+        onchange="description = this.value"
+        ></textarea>
+        <p>Sum:</p>
+        <input placeholder="0 kr" onchange="amount = this.value">
+        <br>
+        <button class="add" onclick="setAmount(itemTitle, description, amount)">Legg til utgift</button>
+    ` 
+    return html
+}
+
+function incomeList(){
+    let html = ""
+    for (i = 0; i < incomesList.length; i++){
+        html += /*HTML*/ `
+            <tr class="listItem">
+                <td>${incomesList[i].title}</td>
+                <td>${incomesList[i].description}</td>
+                <td>${incomesList[i].amount} kr</td>
+                <td><button class="delete" onclick="deleteItem(${i})">Slett</button></td>
+            </tr>
+        `
+    }
+    return html
+}
+
+function addExpense(){
+    let html = /*HTML*/ `
+        <p>Tittel:</p>
         <input placeholder="Utgift" onchange="itemTitle = this.value">
         <p>Beskrivelse:</p>
         <textarea placeholder="Kort beskrivelse"
@@ -108,12 +139,12 @@ function addIncome(){
         <p>Sum:</p>
         <input placeholder="0 kr" onchange="amount = this.value">
         <br>
-        <button class="add" onclick="setExpense(itemTitle, description, amount)">Legg til utgift</button>
+        <button class="add" onclick="setAmount(itemTitle, description, amount)">Legg til utgift</button>
     ` 
     return html
 }
 
-function incomeList(){
+function expenseList(){
     let html = ""
     for (i = 0; i < expensesList.length; i++){
         html += /*HTML*/ `
@@ -123,25 +154,9 @@ function incomeList(){
                 <td>${expensesList[i].amount} kr</td>
                 <td><button class="delete" onclick="deleteItem(${i})">Slett</button></td>
             </tr>
-
         `
     }
     return html
 }
 
-function setExpense(name, desc, nok){
-    if (!name || !desc || !nok || isNaN(Number(nok))){
-       alert("Du må fylle ut alle feltene og sum må være et heltall")
-    } else {
-    expensesList.push({title: name, description: desc, amount: Number(nok)})
-    itemTitle = "";
-    description = "";
-    amount = "";
-    updateView()
-    }
-}
 
-function deleteItem(index){
-    expensesList.splice(index, 1);
-    updateView()
-}

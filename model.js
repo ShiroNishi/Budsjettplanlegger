@@ -2,12 +2,17 @@
 const model = {
     app: {
         page: "income"
+    },
+    data: {
+        income: [],
+        expenses: []
     }
 }
 
 
 
-let expensesList = []
+const incomesList = model.data.income;
+const expensesList = model.data.expenses;
 
 let itemTitle = ""
 let description = ""
