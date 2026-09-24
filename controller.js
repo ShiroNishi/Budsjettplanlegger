@@ -1,13 +1,9 @@
 
-
 function setPage(page){
     model.app.page = page 
     updateView();
 
 }
-
-
-
 
 function setAmount(name, desc, nok){
     if (!name || !desc || !nok || isNaN(Number(nok))){
@@ -15,12 +11,15 @@ function setAmount(name, desc, nok){
     } else {
         if (model.app.page === "income"){
             incomesList.push({title: name, description: desc, amount: Number(nok)})
+            localStorage.setItem("income", JSON.stringify(incomesList))
         } else if (model.app.page === "expenses"){
             expensesList.push({title: name, description: desc, amount: Number(nok)})
+            localStorage.setItem("expenses", JSON.stringify(expensesList))
         }
     itemTitle = "";
     description = "";
     amount = "";
+
     updateView()
     }
 }
@@ -28,4 +27,13 @@ function setAmount(name, desc, nok){
 function deleteItem(index){
     expensesList.splice(index, 1);
     updateView()
+}
+
+
+function getIncome(){
+    return JSON.parse(localStorage.getItem("income"))
+}
+
+function getExpenses(){
+    return JSON.parse(localStorage.getItem("expenses"))
 }

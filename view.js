@@ -12,8 +12,12 @@ function updateView(){
             break;
     }
     document.getElementById('app').innerHTML = /*HTML*/ `
+        <div id="header-container">
+            <h1><b>Budsjettplanlegger</b></h1>
+            <h3>Måned/År: ___________</h3>
+        </div>
 
-        <div class="container">
+        <div id="page-container">
             <div class="page-buttons">
                 <button class="add" style="margin-right: 100px"
                 onclick="setPage('income')">Inntekter</button>
@@ -22,6 +26,7 @@ function updateView(){
                 <button class="add" style="margin-right: 90px">Oversikt</button>
             </div>
             ${currentPageView}
+            </div>
         </div>
     `
 }
@@ -29,30 +34,21 @@ function updateView(){
 
 function incomeView(){
     let html = /*HTML*/ `
-        <div id="header-container">
-            <h1><b>Budsjettplanlegger</b></h1>
-            <h3>Måned/År: ___________</h3>
+        <div id="budget-element">
+            <h3>Ny inntekt</h3>
+            ${addIncome()}
         </div>
-
-        <div id="page-container">
-            <div id="budget-element">
-                <h3>Ny inntekt</h3>
-                ${addIncome()}
-            </div>
-
-            <div id="budget-element" style="min-width: 200px">
-                <h3>Oversikt inntekter</h3>
-                <table style="border-bottom: solid black; border-bottom-width: 1px">
-                    <tr>
-                        <th style="padding-right: 40px">Utgift</th>
-                        <th style="padding-right: 70px">Beskrivelse</th>
-                        <th style="padding-left: 25px; padding-right: 40px;">Sum</th>
-                        <th>Velg</th>
-                        
-                    </tr>
-                    ${incomeList()}
-                </table>
-            </div>
+        <div id="budget-element" style="min-width: 200px">
+            <h3>Oversikt inntekter</h3>
+            <table style="border-bottom: solid black; border-bottom-width: 1px">
+                <tr>
+                    <th style="padding-right: 40px">Utgift</th>
+                    <th style="padding-right: 70px">Beskrivelse</th>
+                    <th style="padding-left: 25px; padding-right: 40px;">Sum</th>
+                    <th>Velg</th>
+                </tr>
+                ${incomeList()}
+            </table>
         </div>
     `
     return html
@@ -61,31 +57,22 @@ function incomeView(){
 
 function expensesView(){
     let html = /*HTML*/ `
-        <div id="header-container">
-            <h1><b>Budsjettplanlegger</b></h1>
-            <h3>Måned/År: ___________</h3>
+        <div id="budget-element">
+            <h3>Ny utgift</h3>      
+            ${addExpense()}
         </div>
 
-        <div id="page-container">
-            <div id="budget-element">
-                <h3>Ny utgift</h3>
-                
-                ${addExpense()}
-            </div>
-
-            <div id="budget-element" style="min-width: 200px">
-                <h3>Oversikt Utgifter</h3>
-                <table style="border-bottom: solid black; border-bottom-width: 1px">
-                    <tr>
-                        <th style="padding-right: 40px">Utgift</th>
-                        <th style="padding-right: 70px">Beskrivelse</th>
-                        <th style="padding-left: 25px; padding-right: 40px;">Sum</th>
-                        <th>Velg</th>
-                        
-                    </tr>
-                    ${expenseList()}
-                </table>
-            </div>
+        <div id="budget-element" style="min-width: 200px">
+            <h3>Oversikt Utgifter</h3>
+            <table style="border-bottom: solid black; border-bottom-width: 1px">
+                <tr>
+                    <th style="padding-right: 40px">Utgift</th>
+                    <th style="padding-right: 70px">Beskrivelse</th>
+                    <th style="padding-left: 25px; padding-right: 40px;">Sum</th>
+                    <th>Velg</th>
+                </tr>
+                ${expenseList()}
+            </table>
         </div>
     `
     return html
