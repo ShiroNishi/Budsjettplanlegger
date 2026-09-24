@@ -12,10 +12,10 @@ function updateView(){
             break;
     }
     document.getElementById('app').innerHTML = /*HTML*/ `
-        <div id="header-container">
+        <header id="header-container">
             <h1><b>Budsjettplanlegger</b></h1>
             <h3>Måned/År: ___________</h3>
-        </div>
+        </header>
 
         <div id="page-container">
             <div class="page-buttons">
@@ -23,7 +23,8 @@ function updateView(){
                 onclick="setPage('income')">Inntekter</button>
                 <button class="add" style="margin-right: 100px"
                 onclick="setPage('expenses')">Utgifter</button>
-                <button class="add" style="margin-right: 90px">Oversikt</button>
+                <button class="add" style="margin-right: 90px"
+                onclick="setPage('overview')">Oversikt</button>
             </div>
             ${currentPageView}
             </div>
@@ -42,9 +43,9 @@ function incomeView(){
             <h3>Oversikt inntekter</h3>
             <table style="border-bottom: solid black; border-bottom-width: 1px">
                 <tr>
-                    <th style="padding-right: 40px">Utgift</th>
-                    <th style="padding-right: 70px">Beskrivelse</th>
-                    <th style="padding-left: 25px; padding-right: 40px;">Sum</th>
+                    <th>Utgift</th>
+                    <th>Beskrivelse</th>
+                    <th>Sum</th>
                     <th>Velg</th>
                 </tr>
                 ${incomeList()}
@@ -66,9 +67,9 @@ function expensesView(){
             <h3>Oversikt Utgifter</h3>
             <table style="border-bottom: solid black; border-bottom-width: 1px">
                 <tr>
-                    <th style="padding-right: 40px">Utgift</th>
-                    <th style="padding-right: 70px">Beskrivelse</th>
-                    <th style="padding-left: 25px; padding-right: 40px;">Sum</th>
+                    <th>Utgift</th>
+                    <th>Beskrivelse</th>
+                    <th>Sum</th>
                     <th>Velg</th>
                 </tr>
                 ${expenseList()}
@@ -86,11 +87,13 @@ function addIncome(){
     let html = /*HTML*/ `
         <p>Tittel:</p>
         <input placeholder="Inntekt" onchange="itemTitle = this.value">
+        
         <p>Beskrivelse:</p>
         <textarea placeholder="Kort beskrivelse"
         maxlength="30"
         onchange="description = this.value"
         ></textarea>
+
         <p>Sum:</p>
         <input placeholder="0 kr" onchange="amount = this.value">
         <br>

@@ -9,42 +9,49 @@
 
 #page-container{
     margin: 0px 10%;
+    padding: 10px;
     min-width: 920px;
     background-color: #d1e2f0;
     border-radius: 30px;
-    border: solid #000000;
     border-width: 1px;
     display: grid;
     grid-template-columns: 1fr 3fr;
     justify-items: stretch;
+    box-shadow: 4px 4px 4px 4px #3e507c;
 }
 
 .page-buttons{
     margin-top: 10px;
     position: relative;
     grid-column: span 2;
-    justify-self: right;
+    justify-self: center;
 }
 
 #budget-element{
     margin: 20px;
     background-color: #e2f2f5;
     border-radius: 20px;
-    border: solid #000000;
     border-width: 1px;
     padding-left: 20px;
     padding-bottom: 20px;
     padding-right: 20px;
+    box-shadow: 2px 2px 2px 2px rgba(94, 114, 172, 0.884);
 }
 
 .add{
     margin-top: 10px;
     color: white;
-    background-color: rgb(34, 122, 238);
+    background-color: #227aee;
     border-radius: 5px;
     text-align: center;
     width: 150px;
     padding: 3px 0px;
+    transition:
+        background-color 1s;
+}
+
+.add:hover{
+    background-color: #b2e4f8;
 }
 
 .delete{
@@ -58,12 +65,16 @@
 }
 
 .listItem{
+    margin: 20px;
     border-bottom: solid rgb(0, 0, 0);
     border-bottom-width: 1px;
+    background-color: #f5e8cf;
+    text-align: center;
 }
 
-
-
+table{
+    width: 100%;
+}
 
 html {
   font-size: clamp(16px, 1.2vw + 10px, 28px);
