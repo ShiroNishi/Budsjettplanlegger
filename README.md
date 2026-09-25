@@ -13,3 +13,5 @@ Marker utgifter som overstiger en viss grense
 Vis største og minste utgift
 
 https://shironishi.github.io/Budsjettplanlegger/
+
+*Denne har også localStorage og husker dataene dine når du refresher siden
