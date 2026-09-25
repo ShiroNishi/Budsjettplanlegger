@@ -24,8 +24,23 @@ function setAmount(name, desc, nok){
     }
 }
 
-function deleteItem(index){
-    expensesList.splice(index, 1);
+function deleteItem(list, index){
+    if (list === 'income'){
+        const currentArray = JSON.parse(localStorage.getItem("income"));
+        if (index > -1 && index < currentArray.length) {
+            incomesList.splice(index, 1);
+            currentArray.splice(index, 1);
+            localStorage.setItem("income", JSON.stringify(currentArray));
+        } 
+    } else if (list === "expenses"){
+        const currentArray = JSON.parse(localStorage.getItem("expenses"));
+        if (index > -1 && index < currentArray.length) {
+            expensesList.splice(index, 1);
+            currentArray.splice(index, 1);
+            localStorage.setItem("expenses", JSON.stringify(currentArray))
+        }
+    }
+    
     updateView()
 }
 

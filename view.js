@@ -1,6 +1,8 @@
+// HOVEDVIEWS
 
+loadList(); //Sjekker data
 
-updateView()
+updateView();
 function updateView(){
     let currentPageView = "";
     switch (model.app.page) {
@@ -68,7 +70,7 @@ function expensesView(){
             <table style="border-bottom: solid black; border-bottom-width: 1px">
                 <tr>
                     <th>Utgift</th>
-                    <th>Beskrivelse</th>
+                    <th>Kategori</th>
                     <th>Sum</th>
                     <th>Velg</th>
                 </tr>
@@ -89,7 +91,7 @@ function addIncome(){
         <input placeholder="Inntekt" onchange="itemTitle = this.value">
         
         <p>Beskrivelse:</p>
-        <textarea placeholder="Kort beskrivelse"
+        <textarea placeholder="Skriv kategori"
         maxlength="30"
         onchange="description = this.value"
         ></textarea>
@@ -104,13 +106,13 @@ function addIncome(){
 
 function incomeList(){
     let html = ""
-    for (i = 0; i < incomesList.length; i++){
+    for (let i = 0; i < incomesList.length; i++){
         html += /*HTML*/ `
             <tr class="listItem">
                 <td>${incomesList[i].title}</td>
                 <td>${incomesList[i].description}</td>
                 <td>${incomesList[i].amount} kr</td>
-                <td><button class="delete" onclick="deleteItem(${i})">Slett</button></td>
+                <td><button class="delete" onclick="deleteItem('income', ${i})">Slett</button></td>
             </tr>
         `
     }
@@ -142,7 +144,7 @@ function expenseList(){
                 <td>${expensesList[i].title}</td>
                 <td>${expensesList[i].description}</td>
                 <td>${expensesList[i].amount} kr</td>
-                <td><button class="delete" onclick="deleteItem(${i})">Slett</button></td>
+                <td><button class="delete" onclick="deleteItem('expenses', ${i})">Slett</button></td>
             </tr>
         `
     }
