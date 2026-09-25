@@ -12,6 +12,9 @@ function updateView(){
         case "expenses":
             currentPageView = expensesView();
             break;
+        case "overview":
+            currentPageView = overviewView();
+            break;
     }
     document.getElementById('app').innerHTML = /*HTML*/ `
         <header id="header-container">
@@ -34,15 +37,14 @@ function updateView(){
     `
 }
 
-
 function incomeView(){
     let html = /*HTML*/ `
-        <div id="budget-element">
-            <h3>Ny inntekt</h3>
+        <div id="budget-element" >
+            <h3><u>Ny inntekt</u></h3>
             ${addIncome()}
         </div>
-        <div id="budget-element" style="min-width: 200px">
-            <h3>Oversikt inntekter</h3>
+        <div id="budget-element" style="min-width: 200px; grid-column: span 2">
+            <h3><u>Oversikt inntekter</u></h3>
             <table style="border-bottom: solid black; border-bottom-width: 1px">
                 <tr>
                     <th>Utgift</th>
@@ -57,16 +59,15 @@ function incomeView(){
     return html
 }
 
-
 function expensesView(){
     let html = /*HTML*/ `
         <div id="budget-element">
-            <h3>Ny utgift</h3>      
+            <h3><u>Ny utgift</u></h3>      
             ${addExpense()}
         </div>
 
-        <div id="budget-element" style="min-width: 200px">
-            <h3>Oversikt Utgifter</h3>
+        <div id="budget-element" style="min-width: 200px; grid-column: span 2">
+            <h3><u>Oversikt utgifter</u></h3>
             <table style="border-bottom: solid black; border-bottom-width: 1px">
                 <tr>
                     <th>Utgift</th>
@@ -81,10 +82,36 @@ function expensesView(){
     return html
 }
 
+function overviewView() {
+    let html = /*HTML*/ `
+            <div id="budget-element">
+                <h3><u>Total inntekter</u></h3> 
+                
+                sum: ${totalIncome() + " kr"}
+            </div>
+
+            <div id="budget-element">
+                <h3><u>Total utgifter</u></h3> 
+                
+                sum: ${totalExpenses() + " kr"}
+            </div>
+        
+            <div id="budget-element">
+                <h3><u>Saldo</u></h3> 
+                
+                ${checkBalance() + " kr"}
+            </div>
+    `
+
+    return html
+}
 
 
 
-// FUNKSJONER
+
+
+
+// LISTER
 function addIncome(){
     let html = /*HTML*/ `
         <p>Tittel:</p>

@@ -52,3 +52,26 @@ function getIncome(){
 function getExpenses(){
     return JSON.parse(localStorage.getItem("expenses"))
 }
+
+
+function totalIncome() {
+    let total = 0;
+    for (let i = 0; i < model.data.income.length; i++){
+        total += model.data.income[i].amount
+    }
+    return total 
+}
+
+function totalExpenses() {
+    let total = 0
+    for (let i = 0; i < model.data.expenses.length; i++){
+        total += model.data.expenses[i].amount
+    }
+    return total 
+}
+
+function checkBalance(){
+    let incomeBalance = totalIncome();
+    let expensesBalance = totalExpenses();
+    return incomeBalance - expensesBalance
+}
